@@ -62,23 +62,6 @@ Para otra historia: python src/main.py datos/otra_historia.json.
 
 8 escenarios automatizados correctos; tres RNF verificados localmente.
 Resultados en evidencias/. Demo en demo/demostracion.avi: video sin audio que
-presenta salidas reales de ejecución con texto explicativo, no una grabación humana.
+presenta salidas reales de ejecución con texto explicativo.
 También se incluye una vista HTML y transcripción para leerla sin reproductor AVI.
 
-## Subir a un repositorio nuevo
-
-Crea un repositorio vacío. En Upload files arrastra el contenido interior de esta
-carpeta, conservando src/, datos/, docs/, tests/, herramientas/, evidencias/ y demo/.
-Incluye README.md, INFORME.md, VERSION y .gitignore. El ZIP es para descargar y
-transportar; en GitHub publica los archivos descomprimidos para poder revisarlos.
-El historial técnico de preparación se conserva como evidencia; subir por la web
-crea commits nuevos y no importa automáticamente ese historial.
-
-## Procedencia y pendientes
-
-Proyecto preparado ahora con asistencia de Codex a solicitud del usuario. Las
-versiones muestran una evolución técnica reproducible; no acreditan un trabajo
-guardado durante las primeras seis horas del parcial. Jesus Espitia confirmó la revisión personal del informe y código, la ejecución
-de la aplicación y las pruebas y la comprobación de su funcionamiento. Quedan
-pendientes la confirmación docente de la modalidad individual y el comprobante real de envío. No se asignan
-respuestas oficiales ni contribuciones humanas inexistentes. Fuentes en docs/08.

@@ -1,0 +1,36 @@
+{
+  "fecha_utc": "2026-10-15T03:52:12.354001+00:00",
+  "version": "V1",
+  "verificado": [
+    "código",
+    "pruebas",
+    "RNF",
+    "modelos",
+    "arquitectura",
+    "trazabilidad",
+    "demostración",
+    "correspondencia oficial N01–N06"
+  ],
+  "en_revision_humana": [
+    "confirmación docente de modalidad individual",
+    "revisión docente del formato de video"
+  ],
+  "por_hacer_externo": [
+    "publicación en GitHub por el usuario",
+    "envío al aula y comprobante"
+  ],
+  "actualizacion_necesidades_utc": "2026-10-15T03:57:28.297068+00:00",
+  "responsable": "Jesus Espitia",
+  "actualizacion_responsable_utc": "2026-10-15T04:08:55.325292+00:00",
+  "revision_personal": {
+    "estado": "realizada y confirmada por el responsable",
+    "responsable": "Jesus Espitia",
+    "alcance": [
+      "lectura y revisión del informe y código",
+      "ejecución de aplicación y pruebas",
+      "comprobación de funcionamiento"
+    ],
+    "fuente": "confirmación expresa del usuario en el chat",
+    "fecha_registro_utc": "2026-10-15T04:14:08.775378+00:00"
+  }
+}

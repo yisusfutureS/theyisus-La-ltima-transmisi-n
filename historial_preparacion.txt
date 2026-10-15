@@ -1,0 +1,8 @@
+Historial real de preparación actual. No acredita la hora 6.
+
+da4ec2eb4d3465d80fdd7c5ef70163e69a341579
+Autor: Preparacion asistida por Codex
+Fecha: 2026-10-14T22:52:13-05:00
+Asunto: Preparar V1: alcance inicial verificable sin retroceso
+
+Actualización posterior: la tabla oficial fue recibida y se actualizaron requisitos, trazabilidad e informe. El snapshot del bundle conserva el estado anterior a esa actualización documental; el código no cambió.

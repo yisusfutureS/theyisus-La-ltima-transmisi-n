@@ -1,0 +1,92 @@
+{
+  "python": "3.12.14",
+  "RNF01": {
+    "meta": "Segunda historia finalizada con cero cambios de código",
+    "cumple": true,
+    "huellas_antes": {
+      "motor.py": "f442c9242810bd6935ad596f56280dc82af2566fd96f10c56375a5b6272ae781",
+      "cargador.py": "050019379bafdfb4e4d69f57cd9a5faaebf189531c28c7e110c3358ef510ac64",
+      "main.py": "7e187ac85e054069f703919029ad9ab2d9dbbefc3848b7c7f1c5259006b593fd"
+    },
+    "huellas_despues": {
+      "motor.py": "f442c9242810bd6935ad596f56280dc82af2566fd96f10c56375a5b6272ae781",
+      "cargador.py": "050019379bafdfb4e4d69f57cd9a5faaebf189531c28c7e110c3358ef510ac64",
+      "main.py": "7e187ac85e054069f703919029ad9ab2d9dbbefc3848b7c7f1c5259006b593fd"
+    }
+  },
+  "RNF02": {
+    "meta": "9 de 9 categorías con causa y localización",
+    "cumple": true,
+    "casos": [
+      {
+        "caso": "archivo ilegible",
+        "mensaje": "archivo C:\\Users\\espit\\Documents\\Codex\\2026-10-14\\nece\\outputs\\Entrega_V1\\datos\\no_existe.json: no se pudo leer JSON: [Errno 2] No such file or directory: 'C:\\\\Users\\\\espit\\\\Documents\\\\Codex\\\\2026-10-14\\\\nece\\\\outputs\\\\Entrega_V1\\\\datos\\\\no_existe.json'",
+        "cumple": true
+      },
+      {
+        "caso": "campo ausente",
+        "mensaje": "historia.titulo: campo obligatorio ausente",
+        "cumple": true
+      },
+      {
+        "caso": "inicio inexistente",
+        "mensaje": "inicio: escena inexistente: E99",
+        "cumple": true
+      },
+      {
+        "caso": "escena duplicada",
+        "mensaje": "escena E1: ID de escena repetido",
+        "cumple": true
+      },
+      {
+        "caso": "opción duplicada",
+        "mensaje": "escena E1.opcion revisar: ID de opción repetido",
+        "cumple": true
+      },
+      {
+        "caso": "destino inexistente",
+        "mensaje": "escena E1.opcion revisar.destino: escena inexistente: E99",
+        "cumple": true
+      },
+      {
+        "caso": "variable no declarada",
+        "mensaje": "escena E1.opcion revisar.efectos.otra: variable no declarada",
+        "cumple": true
+      },
+      {
+        "caso": "valor no booleano",
+        "mensaje": "variables.conoce_origen: debe ser booleano",
+        "cumple": true
+      },
+      {
+        "caso": "final incompatible",
+        "mensaje": "escena E1.opciones: cantidad incompatible con final",
+        "cumple": true
+      }
+    ]
+  },
+  "RNF03": {
+    "meta": "Tres ejecuciones consecutivas de 7 escenarios sin fallos",
+    "cumple": true,
+    "ejecuciones": [
+      {
+        "casos": 7,
+        "fallos": 0,
+        "errores": 0,
+        "cumple": true
+      },
+      {
+        "casos": 7,
+        "fallos": 0,
+        "errores": 0,
+        "cumple": true
+      },
+      {
+        "casos": 7,
+        "fallos": 0,
+        "errores": 0,
+        "cumple": true
+      }
+    ]
+  }
+}

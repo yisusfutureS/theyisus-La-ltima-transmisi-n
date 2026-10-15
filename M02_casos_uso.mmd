@@ -1,0 +1,22 @@
+flowchart LR
+    L[Lector]
+    E[Escritora]
+    J[JSON editado fuera del sistema]
+    subgraph Sistema[Motor de historias]
+      C([UC01 Cargar historia])
+      V([Validar contenido])
+      I([UC02 Iniciar partida])
+      P([UC03 Consultar escena y opciones])
+      O([UC04 Elegir opción])
+      R([UC05 Reiniciar])
+      S([UC06 Salir])
+    end
+    L --> C
+    L --> P
+    L --> O
+    L --> R
+    L --> S
+    C -.->|incluye| V
+    C -->|si es válida| I
+    E --> J
+    J --> C

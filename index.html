@@ -1,0 +1,41 @@
+<!doctype html><html lang="es"><meta charset="utf-8"><title>Demostración V1</title><style>body{max-width:1050px;margin:40px auto;background:#101724;color:#eef4ff;font:18px system-ui;padding:20px}section{border-top:2px solid #32cab4;padding:24px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:15px monospace;line-height:1.6}h1,h2{color:#66dfc9}</style><h1>Demostración V1</h1><p>Salidas reales reproducibles. Video sin audio: demostracion.avi. Jesus Espitia.</p><section><h2>La última transmisión — V1</h2><pre>Jesus Espitia
+Demostración automatizada sin audio.
+Las siguientes pantallas reproducen salidas reales del motor.
+
+V1: alcance inicial sin retroceso.
+
+Los archivos de prueba y la transcripción están incluidos.</pre></section><section><h2>Recorrido al final E4</h2><pre>Inicio: {&quot;escena&quot;: &quot;E1&quot;, &quot;variables&quot;: {&quot;conoce_origen&quot;: false, &quot;confia_en_la_voz&quot;: false}, &quot;final&quot;: false, &quot;opciones&quot;: [&quot;revisar&quot;]}
+Elegir revisar: {&quot;escena&quot;: &quot;E2&quot;, &quot;variables&quot;: {&quot;conoce_origen&quot;: false, &quot;confia_en_la_voz&quot;: false}, &quot;final&quot;: false, &quot;opciones&quot;: [&quot;investigar&quot;, &quot;continuar&quot;]}
+Elegir investigar: {&quot;escena&quot;: &quot;E3&quot;, &quot;variables&quot;: {&quot;conoce_origen&quot;: true, &quot;confia_en_la_voz&quot;: false}, &quot;final&quot;: false, &quot;opciones&quot;: [&quot;activar_codigo&quot;, &quot;cortar&quot;]}
+Elegir activar_codigo: {&quot;escena&quot;: &quot;E4&quot;, &quot;variables&quot;: {&quot;conoce_origen&quot;: true, &quot;confia_en_la_voz&quot;: true}, &quot;final&quot;: true, &quot;opciones&quot;: []}</pre></section><section><h2>Recorrido al final E5</h2><pre>Inicio: {&quot;escena&quot;: &quot;E1&quot;, &quot;variables&quot;: {&quot;conoce_origen&quot;: false, &quot;confia_en_la_voz&quot;: false}, &quot;final&quot;: false, &quot;opciones&quot;: [&quot;revisar&quot;]}
+Elegir revisar: {&quot;escena&quot;: &quot;E2&quot;, &quot;variables&quot;: {&quot;conoce_origen&quot;: false, &quot;confia_en_la_voz&quot;: false}, &quot;final&quot;: false, &quot;opciones&quot;: [&quot;investigar&quot;, &quot;continuar&quot;]}
+Elegir continuar: {&quot;escena&quot;: &quot;E3&quot;, &quot;variables&quot;: {&quot;conoce_origen&quot;: false, &quot;confia_en_la_voz&quot;: false}, &quot;final&quot;: false, &quot;opciones&quot;: [&quot;activar_sin_verificar&quot;, &quot;cortar&quot;]}
+Elegir activar_sin_verificar: {&quot;escena&quot;: &quot;E5&quot;, &quot;variables&quot;: {&quot;conoce_origen&quot;: false, &quot;confia_en_la_voz&quot;: true}, &quot;final&quot;: true, &quot;opciones&quot;: []}</pre></section><section><h2>Recorrido al final E6</h2><pre>Inicio: {&quot;escena&quot;: &quot;E1&quot;, &quot;variables&quot;: {&quot;conoce_origen&quot;: false, &quot;confia_en_la_voz&quot;: false}, &quot;final&quot;: false, &quot;opciones&quot;: [&quot;revisar&quot;]}
+Elegir revisar: {&quot;escena&quot;: &quot;E2&quot;, &quot;variables&quot;: {&quot;conoce_origen&quot;: false, &quot;confia_en_la_voz&quot;: false}, &quot;final&quot;: false, &quot;opciones&quot;: [&quot;investigar&quot;, &quot;continuar&quot;]}
+Elegir investigar: {&quot;escena&quot;: &quot;E3&quot;, &quot;variables&quot;: {&quot;conoce_origen&quot;: true, &quot;confia_en_la_voz&quot;: false}, &quot;final&quot;: false, &quot;opciones&quot;: [&quot;activar_codigo&quot;, &quot;cortar&quot;]}
+Elegir cortar: {&quot;escena&quot;: &quot;E6&quot;, &quot;variables&quot;: {&quot;conoce_origen&quot;: true, &quot;confia_en_la_voz&quot;: false}, &quot;final&quot;: true, &quot;opciones&quot;: []}</pre></section><section><h2>Segunda historia sin cambiar el motor</h2><pre>Segunda historia: El último algoritmo; mismo motor
+Elegir O1: {&quot;escena&quot;: &quot;S2&quot;, &quot;variables&quot;: {&quot;ia_autonoma&quot;: true, &quot;codigo_guardado&quot;: false, &quot;permitio_estudiar&quot;: false}, &quot;final&quot;: false, &quot;opciones&quot;: [&quot;O1&quot;, &quot;O2&quot;, &quot;O3&quot;]}
+Elegir O1: {&quot;escena&quot;: &quot;S5&quot;, &quot;variables&quot;: {&quot;ia_autonoma&quot;: true, &quot;codigo_guardado&quot;: false, &quot;permitio_estudiar&quot;: true}, &quot;final&quot;: true, &quot;opciones&quot;: []}</pre></section><section><h2>Error de contenido controlado</h2><pre>escena E1.opcion revisar.destino: escena inexistente: E99</pre></section><section><h2>Ejecución real de pruebas</h2><pre>test_I1_archivo_tres_finales_y_segunda_historia (test_motor.Pruebas.test_I1_archivo_tres_finales_y_segunda_historia) ... ok
+test_I2_segunda_historia_condiciones_y_finales (test_motor.Pruebas.test_I2_segunda_historia_condiciones_y_finales) ... ok
+test_U1_carga_y_errores (test_motor.Pruebas.test_U1_carga_y_errores) ... ok
+test_U2_condiciones_y_estado_CA01 (test_motor.Pruebas.test_U2_condiciones_y_estado_CA01) ... ok
+test_U3_rechazo_directo_CA02 (test_motor.Pruebas.test_U3_rechazo_directo_CA02) ... ok
+test_U4_finales_y_bloqueo (test_motor.Pruebas.test_U4_finales_y_bloqueo) ... ok
+test_U5_reinicio (test_motor.Pruebas.test_U5_reinicio) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.020s
+
+OK
+</pre></section><section><h2>Verificación de requisitos no funcionales</h2><pre>RNF01: CUMPLE
+RNF02: CUMPLE
+RNF03: CUMPLE
+
+RNF01: segunda historia y huellas del código iguales.
+RNF02: nueve diagnósticos con causa y ubicación.
+RNF03: tres ejecuciones consecutivas sin fallos.</pre></section><section><h2>Decisión de arquitectura e impacto</h2><pre>Contenido JSON, cargador, motor e interfaz separados.
+Otra historia funciona sin editar el motor.
+
+Acuerdo inicial: sin retroceso.
+El motor conserva escena actual y variables; reiniciar
+recupera el estado inicial.</pre></section></html>

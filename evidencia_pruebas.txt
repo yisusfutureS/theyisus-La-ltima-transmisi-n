@@ -1,0 +1,12 @@
+test_I1_archivo_tres_finales_y_segunda_historia (test_motor.Pruebas.test_I1_archivo_tres_finales_y_segunda_historia) ... ok
+test_I2_segunda_historia_condiciones_y_finales (test_motor.Pruebas.test_I2_segunda_historia_condiciones_y_finales) ... ok
+test_U1_carga_y_errores (test_motor.Pruebas.test_U1_carga_y_errores) ... ok
+test_U2_condiciones_y_estado_CA01 (test_motor.Pruebas.test_U2_condiciones_y_estado_CA01) ... ok
+test_U3_rechazo_directo_CA02 (test_motor.Pruebas.test_U3_rechazo_directo_CA02) ... ok
+test_U4_finales_y_bloqueo (test_motor.Pruebas.test_U4_finales_y_bloqueo) ... ok
+test_U5_reinicio (test_motor.Pruebas.test_U5_reinicio) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.020s
+
+OK

@@ -1,0 +1,25 @@
+Recorrido al final E4
+Inicio: {"escena": "E1", "variables": {"conoce_origen": false, "confia_en_la_voz": false}, "final": false, "opciones": ["revisar"]}
+Elegir revisar: {"escena": "E2", "variables": {"conoce_origen": false, "confia_en_la_voz": false}, "final": false, "opciones": ["investigar", "continuar"]}
+Elegir investigar: {"escena": "E3", "variables": {"conoce_origen": true, "confia_en_la_voz": false}, "final": false, "opciones": ["activar_codigo", "cortar"]}
+Elegir activar_codigo: {"escena": "E4", "variables": {"conoce_origen": true, "confia_en_la_voz": true}, "final": true, "opciones": []}
+
+Recorrido al final E5
+Inicio: {"escena": "E1", "variables": {"conoce_origen": false, "confia_en_la_voz": false}, "final": false, "opciones": ["revisar"]}
+Elegir revisar: {"escena": "E2", "variables": {"conoce_origen": false, "confia_en_la_voz": false}, "final": false, "opciones": ["investigar", "continuar"]}
+Elegir continuar: {"escena": "E3", "variables": {"conoce_origen": false, "confia_en_la_voz": false}, "final": false, "opciones": ["activar_sin_verificar", "cortar"]}
+Elegir activar_sin_verificar: {"escena": "E5", "variables": {"conoce_origen": false, "confia_en_la_voz": true}, "final": true, "opciones": []}
+
+Recorrido al final E6
+Inicio: {"escena": "E1", "variables": {"conoce_origen": false, "confia_en_la_voz": false}, "final": false, "opciones": ["revisar"]}
+Elegir revisar: {"escena": "E2", "variables": {"conoce_origen": false, "confia_en_la_voz": false}, "final": false, "opciones": ["investigar", "continuar"]}
+Elegir investigar: {"escena": "E3", "variables": {"conoce_origen": true, "confia_en_la_voz": false}, "final": false, "opciones": ["activar_codigo", "cortar"]}
+Elegir cortar: {"escena": "E6", "variables": {"conoce_origen": true, "confia_en_la_voz": false}, "final": true, "opciones": []}
+
+Segunda historia sin cambiar el motor
+Segunda historia: El último algoritmo; mismo motor
+Elegir O1: {"escena": "S2", "variables": {"ia_autonoma": true, "codigo_guardado": false, "permitio_estudiar": false}, "final": false, "opciones": ["O1", "O2", "O3"]}
+Elegir O1: {"escena": "S5", "variables": {"ia_autonoma": true, "codigo_guardado": false, "permitio_estudiar": true}, "final": true, "opciones": []}
+
+Error de contenido controlado
+escena E1.opcion revisar.destino: escena inexistente: E99

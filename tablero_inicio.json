@@ -1,0 +1,20 @@
+{
+  "momento_utc": "2026-10-15T03:47:27.485257+00:00",
+  "version": "V1",
+  "procedencia": "Preparación actual; no representa la hora 6 del parcial",
+  "por_hacer": [
+    "modelos",
+    "arquitectura",
+    "trazabilidad",
+    "demostración",
+    "verificación del ZIP"
+  ],
+  "en_progreso": [
+    "integración de artefactos"
+  ],
+  "en_revision": [
+    "nombres completos",
+    "aportes",
+    "N01–N06 oficiales"
+  ]
+}

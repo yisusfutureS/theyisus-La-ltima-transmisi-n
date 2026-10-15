@@ -1,0 +1,12 @@
+ZIP extraído y comandos ejecutados correctamente.
+python -m unittest discover -s tests -v
+Resultado: código 0
+
+python herramientas/verificar_rnf.py
+Resultado: código 0
+
+python herramientas/comprobar_consola.py
+Resultado: código 0
+
+python herramientas/demostrar.py
+Resultado: código 0

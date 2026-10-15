@@ -1,0 +1,22 @@
+[
+  {
+    "titulo": "Recorrido al final E4",
+    "salida": "Inicio: {\"escena\": \"E1\", \"variables\": {\"conoce_origen\": false, \"confia_en_la_voz\": false}, \"final\": false, \"opciones\": [\"revisar\"]}\nElegir revisar: {\"escena\": \"E2\", \"variables\": {\"conoce_origen\": false, \"confia_en_la_voz\": false}, \"final\": false, \"opciones\": [\"investigar\", \"continuar\"]}\nElegir investigar: {\"escena\": \"E3\", \"variables\": {\"conoce_origen\": true, \"confia_en_la_voz\": false}, \"final\": false, \"opciones\": [\"activar_codigo\", \"cortar\"]}\nElegir activar_codigo: {\"escena\": \"E4\", \"variables\": {\"conoce_origen\": true, \"confia_en_la_voz\": true}, \"final\": true, \"opciones\": []}"
+  },
+  {
+    "titulo": "Recorrido al final E5",
+    "salida": "Inicio: {\"escena\": \"E1\", \"variables\": {\"conoce_origen\": false, \"confia_en_la_voz\": false}, \"final\": false, \"opciones\": [\"revisar\"]}\nElegir revisar: {\"escena\": \"E2\", \"variables\": {\"conoce_origen\": false, \"confia_en_la_voz\": false}, \"final\": false, \"opciones\": [\"investigar\", \"continuar\"]}\nElegir continuar: {\"escena\": \"E3\", \"variables\": {\"conoce_origen\": false, \"confia_en_la_voz\": false}, \"final\": false, \"opciones\": [\"activar_sin_verificar\", \"cortar\"]}\nElegir activar_sin_verificar: {\"escena\": \"E5\", \"variables\": {\"conoce_origen\": false, \"confia_en_la_voz\": true}, \"final\": true, \"opciones\": []}"
+  },
+  {
+    "titulo": "Recorrido al final E6",
+    "salida": "Inicio: {\"escena\": \"E1\", \"variables\": {\"conoce_origen\": false, \"confia_en_la_voz\": false}, \"final\": false, \"opciones\": [\"revisar\"]}\nElegir revisar: {\"escena\": \"E2\", \"variables\": {\"conoce_origen\": false, \"confia_en_la_voz\": false}, \"final\": false, \"opciones\": [\"investigar\", \"continuar\"]}\nElegir investigar: {\"escena\": \"E3\", \"variables\": {\"conoce_origen\": true, \"confia_en_la_voz\": false}, \"final\": false, \"opciones\": [\"activar_codigo\", \"cortar\"]}\nElegir cortar: {\"escena\": \"E6\", \"variables\": {\"conoce_origen\": true, \"confia_en_la_voz\": false}, \"final\": true, \"opciones\": []}"
+  },
+  {
+    "titulo": "Segunda historia sin cambiar el motor",
+    "salida": "Segunda historia: El último algoritmo; mismo motor\nElegir O1: {\"escena\": \"S2\", \"variables\": {\"ia_autonoma\": true, \"codigo_guardado\": false, \"permitio_estudiar\": false}, \"final\": false, \"opciones\": [\"O1\", \"O2\", \"O3\"]}\nElegir O1: {\"escena\": \"S5\", \"variables\": {\"ia_autonoma\": true, \"codigo_guardado\": false, \"permitio_estudiar\": true}, \"final\": true, \"opciones\": []}"
+  },
+  {
+    "titulo": "Error de contenido controlado",
+    "salida": "escena E1.opcion revisar.destino: escena inexistente: E99"
+  }
+]

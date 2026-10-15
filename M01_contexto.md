@@ -1,0 +1,14 @@
+# M01 contexto
+
+
+
+```mermaid
+flowchart LR
+    L[Lector] -->|elecciones y comandos| S[Motor de historias con consola]
+    S -->|escenas, opciones y mensajes| L
+    E[Escritora] -->|edita externamente| J[Archivos JSON]
+    J -->|contenido| S
+    D[Diseñador] -->|define reglas narrativas| E
+    C[Coordinadora] -->|solicita ejecución y revisión| L
+    S -->|diagnósticos de contenido| C
+```

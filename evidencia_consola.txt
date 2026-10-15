@@ -1,0 +1,3 @@
+Consola: elección inválida, final y reinicio: OK
+Consola: destino E99 rechazado antes de jugar: OK
+Consola: bloqueo controlado y reinicio: OK

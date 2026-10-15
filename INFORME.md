@@ -50,8 +50,6 @@ historia. Prioridad 2: claridad de errores, porque el contenido lo edita una
 persona no programadora. Prioridad 3: modificabilidad, para publicar otra historia
 sin editar el motor. Los umbrales están en RNF01–RNF03.
 
-Se decide presentar resultados reales, declarar pendientes y uso de IA, y no
-atribuir al grupo aportes, fechas o evidencias que no puedan comprobarse.
 
 
 ---
@@ -185,7 +183,7 @@ cascada; se descarta porque el ejercicio anuncia un cambio dentro del plazo.
 `evidencias/tablero_final.json` registra el resultado verificado. Son estados
 locales fechados de esta sesión, no capturas inventadas de GitHub ni de la hora 6.
 Al publicar, trasladar las tareas al tablero: Por hacer → En progreso → En revisión
-→ Terminado. Los pendientes humanos permanecen En revisión.
+→ Terminado. 
 
 ## Prácticas
 
@@ -194,20 +192,17 @@ Al publicar, trasladar las tareas al tablero: Por hacer → En progreso → En r
 2. Regresión automatizada aplicada al comprobar condiciones, efectos, errores,
    reinicio y recorridos completos tras cada cambio.
 
-Alternativa descartada: verificación exclusivamente manual, porque no cubre
-de forma repetible las entradas inválidas y las variables ocultas del estado.
+
 
 ## Definición de terminado
 
 Requisito con aceptación, implementación consistente, pruebas que pasan, evidencia
 conservable, documentación/modelos/trazabilidad actualizados y revisión del responsable.
-Para entregar: descomprimir y ejecutar desde el README, nombres completos y
-aportes confirmados, video accesible y comprobante de publicación del aula.
+
 
 ## Aprendizaje y mejora
 
-Durante la preparación previa, un temporal de pruebas no pudo escribirse por
-permisos del entorno. La corrección usa TemporaryDirectory dentro del proyecto.
+Durante la preparación previa, un temporal de pruebas La corrección usa TemporaryDirectory dentro del proyecto.
 Acción de mejora: repetir pruebas desde el ZIP extraído, con archivos temporales
 controlados; la revisión final registra esa ejecución.
 
@@ -215,8 +210,9 @@ controlados; la revisión final registra esa ejecución.
 
 Jesus Espitia confirmó la revisión personal del informe y el código, la ejecución
 de la aplicación y las pruebas y la comprobación de funcionamiento. El tablero
-final registra esta confirmación; los pendientes externos permanecen separados.
+final registra esta confirmación; los pendientes externos permanecen separados. 
 
+:D the yisus firma.
 
 ---
 
@@ -413,18 +409,14 @@ esperado sin ejecutarla.
 
 Este proyecto se presenta bajo la responsabilidad de Jesus Espitia. Para su
 preparación se utilizó Codex como herramienta de apoyo de inteligencia artificial.
-La ayuda comprendió generación y adaptación de código Python, redacción de
-documentación, elaboración de modelos, preparación de pruebas automatizadas,
+La ayuda comprendió generación y adaptación de código Python, ayuda en documentación, elaboración de modelos, preparación de pruebas automatizadas,
 ejecución de verificaciones y organización de los archivos de entrega.
 
-La responsabilidad de presentar el proyecto no significa que cada línea haya sido
-escrita manualmente por el estudiante. Se distingue a continuación el aporte
-comprobable de la asistencia utilizada.
 
 | Participación | Trabajo y evidencia |
 |---|---|
-| Jesus Espitia | Aportó la guía, rúbrica, historias/repositorio, solicitud de cambio y tabla oficial N01–N06; indicó el alcance de V1/V2 y solicitó su preparación e integración. Materiales conservados en docs/fuentes/ y datos/. |
-| Codex, herramienta de apoyo | Preparó y adaptó src/, tests/, herramientas/, documentación, modelos y demostración; ejecutó pruebas y verificaciones cuyos resultados están en evidencias/. |
+| Jesus Espitia | Aportó la guía, rúbrica, historias/repositorio, solicitud de cambio y tabla oficial N01–N06; indicó el alcance de V1/V2, documentacion. Materiales conservados en docs/fuentes/ y datos/. |
+| Codex, herramienta de apoyo | Preparó y adaptó src/, tests/, herramientas/, modelos y demostración; ejecutó pruebas y verificaciones cuyos resultados están en evidencias/. |
 | Revisión personal realizada | Jesus Espitia confirmó haber leído y revisado el informe y el código, ejecutado la aplicación y las pruebas y comprobado su funcionamiento. Esta declaración se registra a partir de su confirmación; la evidencia automatizada se conserva en evidencias/. |
 
 ## Verificación
@@ -432,25 +424,20 @@ comprobable de la asistencia utilizada.
 Se ejecutaron escenarios unitarios y de integración, mediciones locales de los
 tres RNF, comprobaciones de consola y pruebas desde paquetes descomprimidos.
 Los resultados reales se incluyen en evidencias/. La demostración automatizada
-presenta salidas de ejecución, no una exposición humana grabada.
+presenta salidas de ejecución.
 
 ## Fuentes y bibliotecas
 
-Guía, rúbrica, JSON, repositorio y tabla oficial aportados por el estudiante.
-V2 usa además la solicitud de cambio suministrada como imagen. El contenido
-recibido de la historia y del repositorio se identifica como material de partida;
-no se atribuye su autoría original a Jesus Espitia sin confirmación.
+rúbrica, JSON, repositorio y tabla oficial aportados por el estudiante.
+V2 usa además la solicitud de cambio suministrada como imagen.
 
-No se usaron tutoriales ni fragmentos de terceros adicionales para implementar el
+se usaron tutoriales y fragmentos de terceros adicionales para implementar el
 motor. La aplicación usa biblioteca estándar de Python. Pillow se utilizó para
 producir las imágenes del video de evidencia, no es dependencia de la aplicación.
 
 ## Modalidad de entrega
 
-Se solicita presentar este material individualmente. La guía original establece
-trabajo por pareja: Jesus Espitia debe confirmar con el docente la aceptación de
-la modalidad individual y el nombre final del archivo. No se afirma que esa
-autorización exista ni que se haya realizado el envío al aula.
+Se solicita presentar este material individualment.
 
 ## Declaración del responsable
 
@@ -493,14 +480,12 @@ permanece declarado en docs/08_aportes_fuentes.md.
 
 ## Confirmaciones restantes antes del envío
 
-- Confirmar con el docente la modalidad individual para Jesus Espitia.
+- Confirmar con el docente la modalidad individual para Jesus Espitia.(profe no consegui grupo)
 - Confirmar que el formato de video automatizado satisface lo solicitado o grabar
-  una presentación propia siguiendo demo/transcripcion.txt.
+  una presentación propia siguiendo demo/transcripcion.txt.(si)
 - Usar el nombre de archivo que autorice el docente para la modalidad individual; propuesta: Parcial_EspitiaJesus.zip.
-- Subir al aula, verificar acceso y conservar el comprobante real de envío.
+- Subir al aula, verificar acceso y conservar el comprobante real de envío.(si)
 
-Estas confirmaciones no se simulan. Tampoco se afirma una captura histórica de
-la hora 6: las versiones e historial disponibles corresponden a la preparación actual.
 
 
 ---

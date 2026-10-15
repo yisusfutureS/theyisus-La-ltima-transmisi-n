@@ -18,5 +18,9 @@
   {
     "titulo": "Error de contenido controlado",
     "salida": "escena E1.opcion revisar.destino: escena inexistente: E99"
+  },
+  {
+    "titulo": "Cambio: retroceso de un nivel",
+    "salida": "Inicio: respaldo=False\nInvestigar: {\"escena\": \"E3\", \"variables\": {\"conoce_origen\": true, \"confia_en_la_voz\": false}, \"final\": false, \"opciones\": [\"activar_codigo\", \"cortar\"]}\nOpción inexistente o no habilitada: activar_sin_verificar; respaldo=True\nDeshacer: {\"escena\": \"E2\", \"variables\": {\"conoce_origen\": false, \"confia_en_la_voz\": false}, \"final\": false, \"opciones\": [\"investigar\", \"continuar\"]}\nOtro deshacer: False\nLlegada al final: {\"escena\": \"E5\", \"variables\": {\"conoce_origen\": false, \"confia_en_la_voz\": true}, \"final\": true, \"opciones\": []}\nDesde final: {\"escena\": \"E3\", \"variables\": {\"conoce_origen\": false, \"confia_en_la_voz\": false}, \"final\": false, \"opciones\": [\"activar_sin_verificar\", \"cortar\"]}\nReinicio: {\"escena\": \"E1\", \"variables\": {\"conoce_origen\": false, \"confia_en_la_voz\": false}, \"final\": false, \"opciones\": [\"revisar\"]}; respaldo=False"
   }
 ]

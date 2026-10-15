@@ -4,19 +4,19 @@ RF16 verificado: texto E1, E2, E3 y reinicio E1.
 
 [E1] Son las 02:13. Una voz pide ayuda desde la estación Aurora, abandonada hace veinte años. La operadora decide revisar la transmisión.
   revisar: Revisar señal
-Comandos: :reiniciar, :salir
+Comandos: :deshacer, :reiniciar, :salir
 > 
 [E2] La señal incluye un código antiguo. Es posible consultar el archivo para averiguar su procedencia o continuar sin investigar.
   investigar: Investigar archivo
   continuar: Continuar sin investigar
-Comandos: :reiniciar, :salir
+Comandos: :deshacer, :reiniciar, :salir
 > 
 [E3] La voz pide activar la antena. Con la información disponible, la operadora debe decidir si confía en ella o corta la comunicación.
   activar_codigo: Activar con código
   cortar: Cortar comunicación
-Comandos: :reiniciar, :salir
+Comandos: :deshacer, :reiniciar, :salir
 > 
 [E1] Son las 02:13. Una voz pide ayuda desde la estación Aurora, abandonada hace veinte años. La operadora decide revisar la transmisión.
   revisar: Revisar señal
-Comandos: :reiniciar, :salir
+Comandos: :deshacer, :reiniciar, :salir
 > 

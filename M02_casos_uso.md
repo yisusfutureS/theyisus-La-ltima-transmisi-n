@@ -15,6 +15,7 @@ flowchart LR
       O([UC04 Elegir opción])
       R([UC05 Reiniciar])
       S([UC06 Salir])
+      U([UC07 Deshacer última elección])
     end
     L --> C
     L --> P
@@ -25,4 +26,6 @@ flowchart LR
     C -->|si es válida| I
     E --> J
     J --> C
+    L --> U
+
 ```

@@ -17,12 +17,12 @@ def main():
         escena = motor.escena_actual
         print(f"\n[{escena['id']}] {escena['texto']}")
         if escena['final']:
-            print('FIN. Puedes reiniciar o salir.')
+            print('FIN. Puedes deshacer, reiniciar o salir.')
         elif motor.bloqueada:
             print('Bloqueo: no hay opciones habilitadas. Puedes reiniciar.')
         for opcion in motor.opciones_disponibles():
             print(f"  {opcion['id']}: {opcion['texto']}")
-        print('Comandos: :reiniciar, :salir')
+        print('Comandos: :deshacer, :reiniciar, :salir')
         try:
             entrada = input('> ').strip()
         except (EOFError, KeyboardInterrupt):
@@ -32,6 +32,9 @@ def main():
             return 0
         if entrada == ':reiniciar':
             motor.reiniciar()
+        elif entrada == ':deshacer':
+            if not motor.deshacer():
+                print('No hay una decisión disponible para deshacer.')
         else:
             try:
                 motor.elegir(entrada)

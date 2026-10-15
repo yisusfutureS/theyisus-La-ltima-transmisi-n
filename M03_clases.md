@@ -28,6 +28,9 @@ classDiagram
       _escenas: dict
       _actual: str
       _variables: dict
+      _anterior: tuple_or_None
+      puede_deshacer()
+      deshacer()
       escena_actual()
       variables()
       opciones_disponibles()

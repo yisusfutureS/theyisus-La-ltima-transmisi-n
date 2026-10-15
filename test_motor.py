@@ -3,14 +3,17 @@ import tempfile
 from pathlib import Path
 from copy import deepcopy
 import sys
+
 RAIZ = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(RAIZ / 'src'))
+sys.path.insert(0, str(RAIZ / "src"))
+
 from cargador import cargar_historia, validar_historia, ErrorHistoria
 from motor import Motor, ErrorEleccion
+
 BASE = RAIZ / 'datos'
 
-class Pruebas(unittest.TestCase):
 
+class Pruebas(unittest.TestCase):
     def setUp(self):
         self.datos = cargar_historia(BASE / 'la_ultima_transmision.json')
         self.motor = Motor(self.datos)
@@ -25,7 +28,6 @@ class Pruebas(unittest.TestCase):
             with self.assertRaisesRegex(ErrorHistoria, 'JSON'):
                 cargar_historia(ruta)
         variantes = []
-
         def caso(nombre, modificar):
             copia = deepcopy(self.datos)
             modificar(copia)
@@ -61,7 +63,6 @@ class Pruebas(unittest.TestCase):
         with self.assertRaises(ErrorEleccion):
             self.motor.elegir('activar_codigo')
         self.assertEqual(self.motor.escena_actual['id'], 'E3')
-        self.assertEqual(self.motor.variables, self.datos['variables'])
         self.motor.elegir('activar_sin_verificar')
         self.assertEqual(self.motor.escena_actual['id'], 'E5')
 
@@ -73,16 +74,40 @@ class Pruebas(unittest.TestCase):
             motor.elegir('revisar')
         motor.reiniciar()
         self.assertEqual(motor.escena_actual['id'], 'E1')
+        self.assertFalse(motor.puede_deshacer)
 
     def test_U5_reinicio(self):
+        self.assertFalse(self.motor.puede_deshacer)
         self.motor.elegir('revisar')
         self.motor.elegir('investigar')
         self.motor.reiniciar()
         self.assertEqual(self.motor.escena_actual['id'], 'E1')
         self.assertEqual(self.motor.variables, self.datos['variables'])
+        self.assertFalse(self.motor.puede_deshacer)
 
-    def test_I1_archivo_tres_finales_y_segunda_historia(self):
-        for intermedia, ultima, final in [('investigar', 'activar_codigo', 'E4'), ('continuar', 'activar_sin_verificar', 'E5'), ('investigar', 'cortar', 'E6')]:
+    def test_U6_deshacer(self):
+        self.assertFalse(self.motor.deshacer())
+        self.motor.elegir('revisar')
+        previo = self.motor.variables
+        self.motor.elegir('investigar')
+        for invalida in ['inexistente', 'activar_sin_verificar']:
+            with self.assertRaises(ErrorEleccion):
+                self.motor.elegir(invalida)
+            self.assertTrue(self.motor.puede_deshacer)
+            self.assertTrue(self.motor.variables['conoce_origen'])
+        self.assertTrue(self.motor.deshacer())
+        self.assertEqual(self.motor.escena_actual['id'], 'E2')
+        self.assertEqual(self.motor.variables, previo)
+        self.assertFalse(self.motor.deshacer())
+        self.assertEqual(self.motor.escena_actual['id'], 'E2')
+        self.motor.elegir('continuar')
+        self.assertTrue(self.motor.puede_deshacer)
+        self.assertEqual({o['id'] for o in self.motor.opciones_disponibles()}, {'activar_sin_verificar', 'cortar'})
+
+    def test_I1_archivo_tres_finales_deshacer_y_segunda_historia(self):
+        for intermedia, ultima, final in [('investigar', 'activar_codigo', 'E4'),
+                                          ('continuar', 'activar_sin_verificar', 'E5'),
+                                          ('investigar', 'cortar', 'E6')]:
             with self.subTest(final=final):
                 motor = Motor(cargar_historia(BASE / 'la_ultima_transmision.json'))
                 motor.elegir('revisar')
@@ -95,26 +120,38 @@ class Pruebas(unittest.TestCase):
                 self.assertTrue(motor.escena_actual['final'])
                 self.assertEqual(motor.opciones_disponibles(), [])
                 self.assertFalse(motor.bloqueada)
+                self.assertTrue(motor.deshacer())
+                self.assertEqual(motor.escena_actual['id'], 'E3')
+                self.assertEqual(motor.variables, previo)
+                self.assertFalse(motor.deshacer())
         motor = Motor(cargar_historia(BASE / 'segunda_historia.json'))
         motor.elegir('O1')
         motor.elegir('O1')
         self.assertTrue(motor.escena_actual['final'])
         self.assertEqual(motor.escena_actual['id'], 'S5')
 
+
     def test_I2_segunda_historia_condiciones_y_finales(self):
-        for elecciones, final in [(['O2'], 'S3'), (['O1', 'O2'], 'S4'), (['O1', 'O1'], 'S5')]:
+        for elecciones, final in [(['O2'], 'S3'), (['O1', 'O2'], 'S4'),
+                                  (['O1', 'O1'], 'S5')]:
             with self.subTest(final=final):
                 motor = Motor(cargar_historia(BASE / 'segunda_historia.json'))
                 for eleccion in elecciones:
                     motor.elegir(eleccion)
                 self.assertEqual(motor.escena_actual['id'], final)
                 self.assertTrue(motor.escena_actual['final'])
+                self.assertTrue(motor.deshacer())
+                self.assertFalse(motor.puede_deshacer)
         motor = Motor(cargar_historia(BASE / 'segunda_historia.json'))
         motor.elegir('O3')
         self.assertEqual({o['id'] for o in motor.opciones_disponibles()}, {'O2', 'O3'})
         with self.assertRaises(ErrorEleccion):
             motor.elegir('O1')
-        self.assertEqual(motor.escena_actual['id'], 'S2')
-        self.assertEqual(motor.variables, {'ia_autonoma': False, 'codigo_guardado': False, 'permitio_estudiar': False})
+        self.assertTrue(motor.deshacer())
+        self.assertEqual(motor.escena_actual['id'], 'S1')
+        self.assertEqual(motor.variables, {'ia_autonoma': False, 'codigo_guardado': False,
+                                         'permitio_estudiar': False})
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

@@ -23,3 +23,13 @@ Elegir O1: {"escena": "S5", "variables": {"ia_autonoma": true, "codigo_guardado"
 
 Error de contenido controlado
 escena E1.opcion revisar.destino: escena inexistente: E99
+
+Cambio: retroceso de un nivel
+Inicio: respaldo=False
+Investigar: {"escena": "E3", "variables": {"conoce_origen": true, "confia_en_la_voz": false}, "final": false, "opciones": ["activar_codigo", "cortar"]}
+Opción inexistente o no habilitada: activar_sin_verificar; respaldo=True
+Deshacer: {"escena": "E2", "variables": {"conoce_origen": false, "confia_en_la_voz": false}, "final": false, "opciones": ["investigar", "continuar"]}
+Otro deshacer: False
+Llegada al final: {"escena": "E5", "variables": {"conoce_origen": false, "confia_en_la_voz": true}, "final": true, "opciones": []}
+Desde final: {"escena": "E3", "variables": {"conoce_origen": false, "confia_en_la_voz": false}, "final": false, "opciones": ["activar_sin_verificar", "cortar"]}
+Reinicio: {"escena": "E1", "variables": {"conoce_origen": false, "confia_en_la_voz": false}, "final": false, "opciones": ["revisar"]}; respaldo=False

@@ -23,8 +23,21 @@ sequenceDiagram
             M-->>UI: ErrorEleccion sin modificar sesión
             UI-->>L: Mostrar error y continuar
         else Elección válida
+            M->>M: Copiar escena y variables en respaldo único
             M->>M: Aplicar efectos y cambiar destino
             UI->>M: Consultar escena y opciones nuevas
             UI-->>L: Nueva escena, final o bloqueo
         end
+    end
+    opt Usuario solicita deshacer, incluso desde final
+        L->>UI: :deshacer
+        UI->>M: deshacer()
+        alt Existe respaldo
+            M->>M: Restaurar escena y todas las variables
+            M->>M: Consumir respaldo
+            M-->>UI: True
+        else No existe respaldo
+            M-->>UI: False sin cambios
+        end
+        UI-->>L: Estado restaurado o mensaje
     end

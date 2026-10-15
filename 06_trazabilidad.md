@@ -33,6 +33,10 @@ tests/test_motor.py y su resultado está en evidencias/evidencia_pruebas.txt.
 | RF09 | N06 | M01/M02/M04 | src/cargador.py | tests/test_motor.py: U1; consola |
 | RF10 | Regla explícita de bloqueo de la guía; complementa N02/N05 | M02/M03/M04/M05 | src/motor.py; src/main.py | tests/test_motor.py: U4; consola |
 | RF11 | N05 | M02/M03/M04/M05 | src/motor.py; src/main.py | tests/test_motor.py: U5 |
+| RF12 | Solicitud de cambio; complementa N03/N04 | M02/M03/M04/M05 | src/motor.py; src/main.py | tests/test_motor.py: U6/I1 |
+| RF13 | Solicitud de cambio | M02/M03/M04/M05 | src/motor.py; src/main.py | tests/test_motor.py: U6 |
+| RF14 | Solicitud de cambio; complementa N03 | M02/M03/M04/M05 | src/motor.py; src/main.py | tests/test_motor.py: U6 |
+| RF15 | Solicitud de cambio; complementa N05 | M02/M03/M04/M05 | src/motor.py; src/main.py | tests/test_motor.py: U5/U6 |
 | RF16 | N02 | M01/M02/M04 | src/main.py; motor.py:escena_actual | demo/transcripcion_consola.txt |
 | RNF01 | N01 | M01/M03; arquitectura | datos/; src/ | evidencias/evidencia_rnf.json:RNF01 |
 | RNF02 | N06 | M02/M04 | src/cargador.py; main.py | evidencias/evidencia_rnf.json:RNF02.casos |

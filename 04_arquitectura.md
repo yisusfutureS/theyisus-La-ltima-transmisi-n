@@ -24,7 +24,7 @@ historia. Su verificación está en evidencias/evidencia_rnf.json.
 
 ## ADR02 — Control de estado
 
-El motor vuelve a evaluar las condiciones al recibir un ID. Alternativa: confiar solamente en las opciones mostradas por la interfaz. Se elige validar dentro del motor para impedir saltarse condiciones mediante llamadas directas; el costo es recorrer las opciones y condiciones en cada elección.
+La instantánea única guarda la escena y una copia de todas las variables; se consume al deshacer. Alternativas: pila ilimitada u operaciones inversas. Se elige instantánea para cumplir un nivel sin calcular inversas; su memoria es proporcional a las variables. Una entrada inválida no la sustituye.
 
 ## Contrato de componentes
 
@@ -33,3 +33,5 @@ Motor(historia) valida y copia los datos; escena_actual y variables devuelven
 copias. elegir(id) solo acepta opciones habilitadas; si falla no muta el estado.
 reiniciar() restaura los valores originales. La escena final tiene cero opciones;
 bloqueada distingue un bloqueo de un final legítimo.
+
+puede_deshacer indica si existe respaldo; deshacer devuelve True si restauró y False si no había respaldo.

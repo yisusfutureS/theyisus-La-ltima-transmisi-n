@@ -1,8 +1,8 @@
-# La última transmisión — V1
+# La última transmisión — V2
 
 **Responsable de la entrega: Jesus Espitia.**
 
-Motor de ficción interactiva en Python. V1 implementa el alcance inicial sin retroceso.
+Motor de ficción interactiva en Python. V2 incluye deshacer una última decisión válida, restaurando escena y variables.
 Contenido y reglas se leen de JSON; no hay rutas de esta historia codificadas en el motor.
 
 ## Instalación y ejecución
@@ -20,9 +20,9 @@ python herramientas/comprobar_consola.py
 python herramientas/demostrar.py
 ```
 
-Escribe un ID visible. Comandos: :reiniciar y :salir.
+Escribe un ID visible. Comandos: :deshacer, :reiniciar y :salir.
 Una entrada inválida produce un mensaje y permite continuar. En un final puedes
-reiniciar o salir. Un bloqueo informa que no hay opciones habilitadas.
+deshacer, reiniciar o salir. Un bloqueo informa que no hay opciones habilitadas.
 
 ## Documentación para leer
 
@@ -36,7 +36,7 @@ reiniciar o salir. Un bloqueo informa que no hay opciones habilitadas.
 | Arquitectura y decisiones | [04](docs/04_arquitectura.md) |
 | Plan y resultados de pruebas | [05](docs/05_pruebas.md) |
 | Trazabilidad | [06](docs/06_trazabilidad.md) |
-| Acuerdo inicial y conflicto | [07](docs/07_cambio.md) |
+| Análisis del cambio | [07](docs/07_cambio.md) |
 | Aportes y fuentes | [08](docs/08_aportes_fuentes.md) |
 | Revisión de la rúbrica y pendientes | [09](docs/09_revision_final.md) |
 
@@ -60,7 +60,7 @@ Para otra historia: python src/main.py datos/otra_historia.json.
 
 ## Evidencia y demostración
 
-7 escenarios automatizados correctos; tres RNF verificados localmente.
+8 escenarios automatizados correctos; tres RNF verificados localmente.
 Resultados en evidencias/. Demo en demo/demostracion.avi: video sin audio que
 presenta salidas reales de ejecución con texto explicativo, no una grabación humana.
 También se incluye una vista HTML y transcripción para leerla sin reproductor AVI.

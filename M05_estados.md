@@ -26,4 +26,12 @@ stateDiagram-v2
     Jugando --> [*]: salir
     Final --> [*]: salir
     Bloqueada --> [*]: salir
+    Jugando --> Jugando: deshacer con respaldo restaura escena previa
+    Final --> Jugando: deshacer con respaldo
+    Bloqueada --> Jugando: deshacer con respaldo
+    note right of Jugando
+      El respaldo guarda un estado desde el que hubo una elección válida.
+      Deshacer sin respaldo no cambia nada.
+      Una elección válida renueva el respaldo; reiniciar lo elimina.
+    end note
 ```

@@ -1,12 +1,13 @@
-"""Motor del alcance inicial: elecciones, estado, finales y reinicio."""
+"""Estado de una partida y retroceso de un único nivel."""
 from copy import deepcopy
 from cargador import validar_historia
+
 
 class ErrorEleccion(ValueError):
     pass
 
-class Motor:
 
+class Motor:
     def __init__(self, historia):
         self._historia = validar_historia(historia)
         self._escenas = {e['id']: e for e in self._historia['escenas']}
@@ -20,20 +21,36 @@ class Motor:
     def variables(self):
         return self._variables.copy()
 
+    @property
+    def puede_deshacer(self):
+        return self._anterior is not None
+
     def opciones_disponibles(self):
-        return [deepcopy(o) for o in self._escenas[self._actual]['opciones'] if all((self._variables[n] == v for n, v in o['condiciones'].items()))]
+        return [deepcopy(o) for o in self._escenas[self._actual]['opciones']
+                if all(self._variables[n] == v for n, v in o['condiciones'].items())]
 
     @property
     def bloqueada(self):
-        return not self._escenas[self._actual]['final'] and (not self.opciones_disponibles())
+        return not self._escenas[self._actual]['final'] and not self.opciones_disponibles()
 
     def elegir(self, identificador):
-        opcion = next((o for o in self.opciones_disponibles() if o['id'] == identificador), None)
+        opcion = next((o for o in self.opciones_disponibles()
+                       if o['id'] == identificador), None)
         if opcion is None:
             raise ErrorEleccion(f'Opción inexistente o no habilitada: {identificador}')
+        # Solo una elección válida sustituye el respaldo anterior.
+        self._anterior = (self._actual, self._variables.copy())
         self._variables.update(opcion['efectos'])
         self._actual = opcion['destino']
+
+    def deshacer(self):
+        if self._anterior is None:
+            return False
+        self._actual, self._variables = self._anterior
+        self._anterior = None
+        return True
 
     def reiniciar(self):
         self._actual = self._historia['inicio']
         self._variables = self._historia['variables'].copy()
+        self._anterior = None

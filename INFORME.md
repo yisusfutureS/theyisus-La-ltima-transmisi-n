@@ -1,4 +1,4 @@
-# Informe V1 — La última transmisión
+# Informe V2 — La última transmisión
 
 Responsable: **Jesus Espitia**.
 Revisión personal realizada y confirmada. Asistencia de Codex declarada en aportes.
@@ -27,14 +27,14 @@ El motor interpreta escenas, condiciones y efectos desde archivos JSON.
 Carga y validación JSON, inicio, presentación de escenas y opciones habilitadas,
 elecciones válidas, rechazo de entradas inválidas, efectos booleanos, finales,
 bloqueos y reinicio. Las historias se intercambian sin modificar el motor.
-No incluye retroceso, persistencia, cuentas, internet, base de datos ni multimedia.
+Incluye deshacer una última elección válida. No incluye persistencia, cuentas, internet, base de datos ni multimedia.
 
 ## Conflicto pendiente
 
 La escritora quiere permitir retroceder siempre y el diseñador prefiere decisiones
 irreversibles. Pregunta: ¿debe permitirse retroceder y con qué consecuencias sobre
 las variables? El acuerdo provisional explícito de la guía es no implementar
-retroceso en el alcance inicial. No se presupone una respuesta posterior.
+retroceso en el alcance inicial. La solicitud posterior autoriza un nivel de retroceso y reemplaza este acuerdo.
 
 ## Dos riesgos
 
@@ -56,7 +56,7 @@ atribuir al grupo aportes, fechas o evidencias que no puedan comprobarse.
 
 ---
 
-# 2. Requisitos del alcance inicial
+# 2. Requisitos de la versión final
 
 Las necesidades oficiales N01–N06 se transcriben de la imagen suministrada
 por el estudiante. La correspondencia completa está al final de este documento
@@ -84,13 +84,13 @@ y en docs/06_trazabilidad.md.
 |---|---|---|
 | RNF01, modificabilidad | Completar la segunda historia con cero cambios en motor, cargador e interfaz. | Comparar SHA-256 antes y después; herramientas/verificar_rnf.py, evidencias/evidencia_rnf.json:RNF01. |
 | RNF02, claridad de errores | Nueve variantes de carga con causa y ubicación identificable. | Introducir cada defecto y comprobar mensajes; evidencias/evidencia_rnf.json:RNF02. |
-| RNF03, confiabilidad | Tres ejecuciones de siete escenarios con cero fallos y errores. | U1–U5, I1 e I2; evidencias/evidencia_rnf.json:RNF03. |
+| RNF03, confiabilidad | Tres ejecuciones de ocho escenarios con cero fallos y errores. | U1–U6, I1 e I2; evidencias/evidencia_rnf.json:RNF03. |
 
 ## Tres preguntas, respuestas o supuestos
 
 1. ¿Se permite volver a una escena anterior? Existe conflicto entre la escritora
    y el diseñador. La guía establece no implementar retroceso en el alcance inicial;
-   se conserva ese acuerdo provisional sin presuponer decisiones posteriores.
+   la solicitud de cambio lo reemplaza por un retroceso de una elección válida.
 2. ¿Cómo se combinan varias condiciones? Supuesto: todas deben cumplirse (Y lógico).
    Un objeto de condiciones vacío, representada por {}, habilita siempre la opción.
 3. ¿Qué sucede ante un bloqueo? La guía exige informar y permitir reiniciar.
@@ -101,6 +101,15 @@ RF01 y RF08–RF09: cargador.py, U1 e I1. RF02 y RF11: Motor.reiniciar, U5.
 RF03: Motor.opciones_disponibles, U2/U3. RF04–RF06: Motor.elegir, U2/U3/I1.
 RF07: escenas finales e interfaz, I1. RF10: Motor.bloqueada e interfaz, U4.
 Los cinco modelos incluidos se enlazan en docs/06_trazabilidad.md.
+
+## Requisitos del cambio
+
+| ID | Comportamiento | Aceptación |
+|---|---|---|
+| RF12 | Deshacer restaura exactamente escena y todas las variables previas a la última elección válida. | Investigar y deshacer devuelve E2 con conoce_origen falso; I1 verifica también regreso desde E4, E5 y E6; U6/I1. |
+| RF13 | Permitir un solo nivel de retroceso, renovado por una elección válida posterior. | Tras deshacer, otro intento devuelve falso y no cambia nada; continuar después habilita otro retroceso; U6. |
+| RF14 | Mantener el respaldo ante entradas inválidas. | Intentos inexistentes o no habilitados no sustituyen el respaldo; aún se puede deshacer investigar; U6. |
+| RF15 | Iniciar sin retroceso y eliminarlo al reiniciar. | Al crear la partida y después de reiniciar puede_deshacer es falso; U5/U6. |
 
 ## Descomposición atómica de RF08
 
@@ -141,11 +150,12 @@ el programa. RF12–RF15 se reservan para la solicitud de cambio y solo aplican 
 | N06 | El escritor necesita saber por qué un archivo no es válido antes de que alguien lo juegue. Los errores mínimos se precisan en la sección de validación. | RF08a–RF08i, RF09 (RF08 agrupa validación) |
 
 RF10 deriva de la regla adicional de bloqueo indicada en la guía.
+RF12–RF15 derivan de la solicitud de cambio, no de una redefinición de N01–N06.
 
 
 ---
 
-# Proceso y agilidad — V1
+# Proceso y agilidad — V2
 
 Responsable de la entrega: Jesus Espitia. Proyecto preparado con asistencia de
 Codex; el alcance de la ayuda y los aportes se declaran en docs/08_aportes_fuentes.md.
@@ -167,6 +177,7 @@ cascada; se descarta porque el ejercicio anuncia un cambio dentro del plazo.
 | B05 | Cinco modelos y arquitectura | Alta | B01–B03 | docs/modelos/; 04_arquitectura.md |
 | B06 | Pruebas, RNF y evidencia | Crítica | B02–B04 | evidencias/ |
 | B07 | Documentación, demostración y ZIP | Alta | B05/B06 | README; demo/ |
+| B08 | Incorporar deshacer y ampliar pruebas | Crítica | V1 verificada | RF12–RF15, U6, docs/07_cambio.md |
 
 ## Tablero y evolución real
 
@@ -235,7 +246,7 @@ historia. Su verificación está en evidencias/evidencia_rnf.json.
 
 ## ADR02 — Control de estado
 
-El motor vuelve a evaluar las condiciones al recibir un ID. Alternativa: confiar solamente en las opciones mostradas por la interfaz. Se elige validar dentro del motor para impedir saltarse condiciones mediante llamadas directas; el costo es recorrer las opciones y condiciones en cada elección.
+La instantánea única guarda la escena y una copia de todas las variables; se consume al deshacer. Alternativas: pila ilimitada u operaciones inversas. Se elige instantánea para cumplir un nivel sin calcular inversas; su memoria es proporcional a las variables. Una entrada inválida no la sustituye.
 
 ## Contrato de componentes
 
@@ -244,6 +255,8 @@ Motor(historia) valida y copia los datos; escena_actual y variables devuelven
 copias. elegir(id) solo acepta opciones habilitadas; si falla no muta el estado.
 reiniciar() restaura los valores originales. La escena final tiene cero opciones;
 bloqueada distingue un bloqueo de un final legítimo.
+
+puede_deshacer indica si existe respaldo; deshacer devuelve True si restauró y False si no había respaldo.
 
 
 ---
@@ -259,6 +272,9 @@ bloqueada distingue un bloqueo de un final legítimo.
 | U5 | revisar, investigar, reiniciar | E1 y todas las variables iniciales. |
 | I1 | JSON real, rutas de E4/E5/E6 y segunda historia | Finales verdaderos y sin avance; segunda historia llega a S5. |
 | I2 | Segunda historia, O2; O1/O2; O1/O1; O3/O1 | S3/S4/S5 alcanzables; desde O3, O1 oculta y rechazada. |
+| U6 | Elegir, entradas inválidas, deshacer repetido y nueva elección | Restauración exacta, respaldo conservado ante invalidez, consumido al deshacer y renovado con elección válida. |
+
+U5 comprueba además limpieza del respaldo; I1 deshace desde cada final.
 
 ## Cobertura de errores
 
@@ -324,6 +340,10 @@ tests/test_motor.py y su resultado está en evidencias/evidencia_pruebas.txt.
 | RF09 | N06 | M01/M02/M04 | src/cargador.py | tests/test_motor.py: U1; consola |
 | RF10 | Regla explícita de bloqueo de la guía; complementa N02/N05 | M02/M03/M04/M05 | src/motor.py; src/main.py | tests/test_motor.py: U4; consola |
 | RF11 | N05 | M02/M03/M04/M05 | src/motor.py; src/main.py | tests/test_motor.py: U5 |
+| RF12 | Solicitud de cambio; complementa N03/N04 | M02/M03/M04/M05 | src/motor.py; src/main.py | tests/test_motor.py: U6/I1 |
+| RF13 | Solicitud de cambio | M02/M03/M04/M05 | src/motor.py; src/main.py | tests/test_motor.py: U6 |
+| RF14 | Solicitud de cambio; complementa N03 | M02/M03/M04/M05 | src/motor.py; src/main.py | tests/test_motor.py: U6 |
+| RF15 | Solicitud de cambio; complementa N05 | M02/M03/M04/M05 | src/motor.py; src/main.py | tests/test_motor.py: U5/U6 |
 | RF16 | N02 | M01/M02/M04 | src/main.py; motor.py:escena_actual | demo/transcripcion_consola.txt |
 | RNF01 | N01 | M01/M03; arquitectura | datos/; src/ | evidencias/evidencia_rnf.json:RNF01 |
 | RNF02 | N06 | M02/M04 | src/cargador.py; main.py | evidencias/evidencia_rnf.json:RNF02.casos |
@@ -339,16 +359,48 @@ en evidencias/evidencia_pruebas.txt; diagnósticos RNF02 en evidencia_rnf.json.
 
 ---
 
-# Acuerdo del alcance inicial
+# Análisis e implementación del cambio
 
-Conflicto: la escritora desea retroceder siempre; el diseñador quiere decisiones
-irreversibles. Pregunta pendiente: ¿debe permitirse retroceder y con qué límites
-y efectos sobre las variables? Acuerdo provisional de la guía: no implementar
-retroceso en V1. El código y modelos de V1 respetan ese acuerdo.
+## Decisión recibida
 
-No se incorporan requisitos del cambio a esta versión. La preparación actual
-conserva una instantánea identificable de V1 para comparar después la modificación.
-No se atribuye a esa instantánea una fecha histórica anterior a su creación real.
+El lector puede deshacer su última elección válida. Deben restaurarse la escena y
+todas las variables anteriores. Solo hay un nivel: deshacer consume el respaldo
+hasta una nueva elección válida. Inicio y reinicio no permiten retroceder. Una
+opción inválida no modifica sesión ni respaldo. Desde E4/E5/E6 se vuelve a E3.
+Esta decisión sustituye el acuerdo inicial sin retroceso.
+
+## Versión de partida e impacto
+
+La V1 se identifica mediante VERSION y los SHA-256 de evidencias/base_v1.json.
+El historial local actual identifica commits V1 y V2; no representa la hora 6.
+
+| Artefacto | Cambio | Evidencia |
+|---|---|---|
+| RF | Añadir RF12–RF15 | docs/02_requisitos.md |
+| Motor | Respaldo único; deshacer; disponibilidad; limpieza en reinicio | src/motor.py |
+| Interfaz | Comando :deshacer y mensaje cuando no hay respaldo | src/main.py |
+| Cargador y JSON | Contrato conservado; sin campos nuevos | Comparación de huellas V1/V2 |
+| Modelos | UC07, respaldo en clase, secuencia de restauración, transiciones desde final | docs/modelos/M02–M05 |
+| Backlog | Incorporar B08 | docs/03_proceso.md |
+| Pruebas | Añadir U6; extender U5 e I1 | tests/test_motor.py |
+| RNF y trazabilidad | Ocho escenarios y referencias al cambio | docs/06_trazabilidad.md; evidencias/ |
+
+## Implementación
+
+elegir valida antes de mutar. Si la elección es válida guarda (_actual,
+_variables.copy()), asigna efectos y avanza. deshacer restaura ese par y elimina
+el respaldo; no existe rehacer ni pila de estados. reiniciar lo elimina también.
+Como las variables son booleanas, una copia simple del dict es suficiente.
+
+## Aceptación y resultados
+
+U6 comprueba restauración exacta, entrada inválida que preserva el respaldo,
+segundo intento sin cambios y nueva elección que vuelve a habilitar retroceso.
+U5 comprueba inicio/reinicio sin respaldo; I1 comprueba el regreso desde E4/E5/E6.
+El ejemplo revisar → investigar → deshacer → continuar muestra en E3 activar sin
+verificar y cortar. La demostración registra ese flujo y la restauración desde E5.
+Resultados reales en evidencias/ y demo/; no se crea una prueba nueva de resultado
+esperado sin ejecutarla.
 
 
 ---
@@ -411,7 +463,7 @@ apoyo en la generación y adaptación de código, documentación, modelos y prue
 
 ---
 
-# Revisión final V1
+# Revisión final V2
 
 | Criterio de rúbrica | Evidencia |
 |---|---|
@@ -420,8 +472,8 @@ apoyo en la generación y adaptación de código, documentación, modelos y prue
 | Requerimientos (20) | docs/02_requisitos.md; aceptación, RNF, preguntas. Cobertura oficial N01–N06 incorporada. |
 | Modelado (15) | docs/modelos/M01–M05, fuentes Mermaid y vista en Markdown. |
 | Arquitectura (15) | docs/04_arquitectura.md; componentes, dos decisiones y segunda historia. |
-| Implementación y pruebas (20) | src/, tests/, evidencias/; 7 escenarios correctos y tres RNF. |
-| Cambio y trazabilidad (10) | El cambio queda fuera del alcance V1. Trazabilidad inicial en docs/06_trazabilidad.md. |
+| Implementación y pruebas (20) | src/, tests/, evidencias/; 8 escenarios correctos y tres RNF. |
+| Cambio y trazabilidad (10) | docs/07_cambio.md y 06_trazabilidad.md. |
 
 No se asigna una nota: la evaluación corresponde al docente y depende de confirmar
 los pendientes. La versión inicial por sí sola no cubre la fase de cambio.
@@ -488,6 +540,7 @@ flowchart LR
       O([UC04 Elegir opción])
       R([UC05 Reiniciar])
       S([UC06 Salir])
+      U([UC07 Deshacer última elección])
     end
     L --> C
     L --> P
@@ -498,6 +551,8 @@ flowchart LR
     C -->|si es válida| I
     E --> J
     J --> C
+    L --> U
+
 ```
 
 
@@ -533,6 +588,9 @@ classDiagram
       _escenas: dict
       _actual: str
       _variables: dict
+      _anterior: tuple_or_None
+      puede_deshacer()
+      deshacer()
       escena_actual()
       variables()
       opciones_disponibles()
@@ -589,10 +647,23 @@ sequenceDiagram
             M-->>UI: ErrorEleccion sin modificar sesión
             UI-->>L: Mostrar error y continuar
         else Elección válida
+            M->>M: Copiar escena y variables en respaldo único
             M->>M: Aplicar efectos y cambiar destino
             UI->>M: Consultar escena y opciones nuevas
             UI-->>L: Nueva escena, final o bloqueo
         end
+    end
+    opt Usuario solicita deshacer, incluso desde final
+        L->>UI: :deshacer
+        UI->>M: deshacer()
+        alt Existe respaldo
+            M->>M: Restaurar escena y todas las variables
+            M->>M: Consumir respaldo
+            M-->>UI: True
+        else No existe respaldo
+            M-->>UI: False sin cambios
+        end
+        UI-->>L: Estado restaurado o mensaje
     end
 ```
 
@@ -627,5 +698,13 @@ stateDiagram-v2
     Jugando --> [*]: salir
     Final --> [*]: salir
     Bloqueada --> [*]: salir
+    Jugando --> Jugando: deshacer con respaldo restaura escena previa
+    Final --> Jugando: deshacer con respaldo
+    Bloqueada --> Jugando: deshacer con respaldo
+    note right of Jugando
+      El respaldo guarda un estado desde el que hubo una elección válida.
+      Deshacer sin respaldo no cambia nada.
+      Una elección válida renueva el respaldo; reiniciar lo elimina.
+    end note
 ```
 

@@ -1,4 +1,4 @@
-# Revisión final V1
+# Revisión final V2
 
 | Criterio de rúbrica | Evidencia |
 |---|---|
@@ -7,8 +7,8 @@
 | Requerimientos (20) | docs/02_requisitos.md; aceptación, RNF, preguntas. Cobertura oficial N01–N06 incorporada. |
 | Modelado (15) | docs/modelos/M01–M05, fuentes Mermaid y vista en Markdown. |
 | Arquitectura (15) | docs/04_arquitectura.md; componentes, dos decisiones y segunda historia. |
-| Implementación y pruebas (20) | src/, tests/, evidencias/; 7 escenarios correctos y tres RNF. |
-| Cambio y trazabilidad (10) | El cambio queda fuera del alcance V1. Trazabilidad inicial en docs/06_trazabilidad.md. |
+| Implementación y pruebas (20) | src/, tests/, evidencias/; 8 escenarios correctos y tres RNF. |
+| Cambio y trazabilidad (10) | docs/07_cambio.md y 06_trazabilidad.md. |
 
 No se asigna una nota: la evaluación corresponde al docente y depende de confirmar
 los pendientes. La versión inicial por sí sola no cubre la fase de cambio.

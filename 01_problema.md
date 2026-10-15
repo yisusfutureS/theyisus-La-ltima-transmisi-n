@@ -20,14 +20,14 @@ El motor interpreta escenas, condiciones y efectos desde archivos JSON.
 Carga y validación JSON, inicio, presentación de escenas y opciones habilitadas,
 elecciones válidas, rechazo de entradas inválidas, efectos booleanos, finales,
 bloqueos y reinicio. Las historias se intercambian sin modificar el motor.
-No incluye retroceso, persistencia, cuentas, internet, base de datos ni multimedia.
+Incluye deshacer una última elección válida. No incluye persistencia, cuentas, internet, base de datos ni multimedia.
 
 ## Conflicto pendiente
 
 La escritora quiere permitir retroceder siempre y el diseñador prefiere decisiones
 irreversibles. Pregunta: ¿debe permitirse retroceder y con qué consecuencias sobre
 las variables? El acuerdo provisional explícito de la guía es no implementar
-retroceso en el alcance inicial. No se presupone una respuesta posterior.
+retroceso en el alcance inicial. La solicitud posterior autoriza un nivel de retroceso y reemplaza este acuerdo.
 
 ## Dos riesgos
 

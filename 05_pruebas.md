@@ -9,6 +9,9 @@
 | U5 | revisar, investigar, reiniciar | E1 y todas las variables iniciales. |
 | I1 | JSON real, rutas de E4/E5/E6 y segunda historia | Finales verdaderos y sin avance; segunda historia llega a S5. |
 | I2 | Segunda historia, O2; O1/O2; O1/O1; O3/O1 | S3/S4/S5 alcanzables; desde O3, O1 oculta y rechazada. |
+| U6 | Elegir, entradas inválidas, deshacer repetido y nueva elección | Restauración exacta, respaldo conservado ante invalidez, consumido al deshacer y renovado con elección válida. |
+
+U5 comprueba además limpieza del respaldo; I1 deshace desde cada final.
 
 ## Cobertura de errores
 

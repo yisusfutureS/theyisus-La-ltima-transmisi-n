@@ -1,4 +1,4 @@
-# 2. Requisitos del alcance inicial
+# 2. Requisitos de la versión final
 
 Las necesidades oficiales N01–N06 se transcriben de la imagen suministrada
 por el estudiante. La correspondencia completa está al final de este documento
@@ -26,13 +26,13 @@ y en docs/06_trazabilidad.md.
 |---|---|---|
 | RNF01, modificabilidad | Completar la segunda historia con cero cambios en motor, cargador e interfaz. | Comparar SHA-256 antes y después; herramientas/verificar_rnf.py, evidencias/evidencia_rnf.json:RNF01. |
 | RNF02, claridad de errores | Nueve variantes de carga con causa y ubicación identificable. | Introducir cada defecto y comprobar mensajes; evidencias/evidencia_rnf.json:RNF02. |
-| RNF03, confiabilidad | Tres ejecuciones de siete escenarios con cero fallos y errores. | U1–U5, I1 e I2; evidencias/evidencia_rnf.json:RNF03. |
+| RNF03, confiabilidad | Tres ejecuciones de ocho escenarios con cero fallos y errores. | U1–U6, I1 e I2; evidencias/evidencia_rnf.json:RNF03. |
 
 ## Tres preguntas, respuestas o supuestos
 
 1. ¿Se permite volver a una escena anterior? Existe conflicto entre la escritora
    y el diseñador. La guía establece no implementar retroceso en el alcance inicial;
-   se conserva ese acuerdo provisional sin presuponer decisiones posteriores.
+   la solicitud de cambio lo reemplaza por un retroceso de una elección válida.
 2. ¿Cómo se combinan varias condiciones? Supuesto: todas deben cumplirse (Y lógico).
    Un objeto de condiciones vacío, representada por {}, habilita siempre la opción.
 3. ¿Qué sucede ante un bloqueo? La guía exige informar y permitir reiniciar.
@@ -43,6 +43,15 @@ RF01 y RF08–RF09: cargador.py, U1 e I1. RF02 y RF11: Motor.reiniciar, U5.
 RF03: Motor.opciones_disponibles, U2/U3. RF04–RF06: Motor.elegir, U2/U3/I1.
 RF07: escenas finales e interfaz, I1. RF10: Motor.bloqueada e interfaz, U4.
 Los cinco modelos incluidos se enlazan en docs/06_trazabilidad.md.
+
+## Requisitos del cambio
+
+| ID | Comportamiento | Aceptación |
+|---|---|---|
+| RF12 | Deshacer restaura exactamente escena y todas las variables previas a la última elección válida. | Investigar y deshacer devuelve E2 con conoce_origen falso; I1 verifica también regreso desde E4, E5 y E6; U6/I1. |
+| RF13 | Permitir un solo nivel de retroceso, renovado por una elección válida posterior. | Tras deshacer, otro intento devuelve falso y no cambia nada; continuar después habilita otro retroceso; U6. |
+| RF14 | Mantener el respaldo ante entradas inválidas. | Intentos inexistentes o no habilitados no sustituyen el respaldo; aún se puede deshacer investigar; U6. |
+| RF15 | Iniciar sin retroceso y eliminarlo al reiniciar. | Al crear la partida y después de reiniciar puede_deshacer es falso; U5/U6. |
 
 ## Descomposición atómica de RF08
 
@@ -83,3 +92,4 @@ el programa. RF12–RF15 se reservan para la solicitud de cambio y solo aplican 
 | N06 | El escritor necesita saber por qué un archivo no es válido antes de que alguien lo juegue. Los errores mínimos se precisan en la sección de validación. | RF08a–RF08i, RF09 (RF08 agrupa validación) |
 
 RF10 deriva de la regla adicional de bloqueo indicada en la guía.
+RF12–RF15 derivan de la solicitud de cambio, no de una redefinición de N01–N06.

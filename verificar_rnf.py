@@ -70,8 +70,8 @@ def main():
                    cumple=modificabilidad, huellas_antes=antes, huellas_despues=huellas()),
         RNF02=dict(meta='9 de 9 categorías con causa y localización',
                    cumple=len(mensajes) == 9 and all(m['cumple'] for m in mensajes), casos=mensajes),
-        RNF03=dict(meta='Tres ejecuciones consecutivas de 7 escenarios sin fallos',
-                   cumple=all(r['cumple'] and r['casos'] == 7 for r in repeticiones), ejecuciones=repeticiones))
+        RNF03=dict(meta='Tres ejecuciones consecutivas de 8 escenarios sin fallos',
+                   cumple=all(r['cumple'] and r['casos'] == 8 for r in repeticiones), ejecuciones=repeticiones))
     (RAIZ / 'evidencias/evidencia_rnf.json').write_text(json.dumps(evidencia, ensure_ascii=False, indent=2), encoding='utf-8')
     for nombre in ['RNF01', 'RNF02', 'RNF03']:
         print(f"{nombre}: {'CUMPLE' if evidencia[nombre]['cumple'] else 'FALLA'}")

@@ -4,14 +4,14 @@
     "meta": "Segunda historia finalizada con cero cambios de código",
     "cumple": true,
     "huellas_antes": {
-      "motor.py": "f442c9242810bd6935ad596f56280dc82af2566fd96f10c56375a5b6272ae781",
+      "motor.py": "9ef2b89bf1aafc969ed2f537bc7fd9b62f9098cc4378bc69704928a709dee102",
       "cargador.py": "050019379bafdfb4e4d69f57cd9a5faaebf189531c28c7e110c3358ef510ac64",
-      "main.py": "7e187ac85e054069f703919029ad9ab2d9dbbefc3848b7c7f1c5259006b593fd"
+      "main.py": "9b7ebae08131d79fd930dbfc1bd997467473901f881f6cf85805bebaff975a0e"
     },
     "huellas_despues": {
-      "motor.py": "f442c9242810bd6935ad596f56280dc82af2566fd96f10c56375a5b6272ae781",
+      "motor.py": "9ef2b89bf1aafc969ed2f537bc7fd9b62f9098cc4378bc69704928a709dee102",
       "cargador.py": "050019379bafdfb4e4d69f57cd9a5faaebf189531c28c7e110c3358ef510ac64",
-      "main.py": "7e187ac85e054069f703919029ad9ab2d9dbbefc3848b7c7f1c5259006b593fd"
+      "main.py": "9b7ebae08131d79fd930dbfc1bd997467473901f881f6cf85805bebaff975a0e"
     }
   },
   "RNF02": {
@@ -20,7 +20,7 @@
     "casos": [
       {
         "caso": "archivo ilegible",
-        "mensaje": "archivo C:\\Users\\espit\\Documents\\Codex\\2026-10-14\\nece\\outputs\\Entrega_V1\\datos\\no_existe.json: no se pudo leer JSON: [Errno 2] No such file or directory: 'C:\\\\Users\\\\espit\\\\Documents\\\\Codex\\\\2026-10-14\\\\nece\\\\outputs\\\\Entrega_V1\\\\datos\\\\no_existe.json'",
+        "mensaje": "archivo C:\\Users\\espit\\Documents\\Codex\\2026-10-14\\nece\\outputs\\Entrega_V2\\datos\\no_existe.json: no se pudo leer JSON: [Errno 2] No such file or directory: 'C:\\\\Users\\\\espit\\\\Documents\\\\Codex\\\\2026-10-14\\\\nece\\\\outputs\\\\Entrega_V2\\\\datos\\\\no_existe.json'",
         "cumple": true
       },
       {
@@ -66,23 +66,23 @@
     ]
   },
   "RNF03": {
-    "meta": "Tres ejecuciones consecutivas de 7 escenarios sin fallos",
+    "meta": "Tres ejecuciones consecutivas de 8 escenarios sin fallos",
     "cumple": true,
     "ejecuciones": [
       {
-        "casos": 7,
+        "casos": 8,
         "fallos": 0,
         "errores": 0,
         "cumple": true
       },
       {
-        "casos": 7,
+        "casos": 8,
         "fallos": 0,
         "errores": 0,
         "cumple": true
       },
       {
-        "casos": 7,
+        "casos": 8,
         "fallos": 0,
         "errores": 0,
         "cumple": true

@@ -1,4 +1,4 @@
-# Proceso y agilidad — V1
+# Proceso y agilidad — V2
 
 Responsable de la entrega: Jesus Espitia. Proyecto preparado con asistencia de
 Codex; el alcance de la ayuda y los aportes se declaran en docs/08_aportes_fuentes.md.
@@ -20,6 +20,7 @@ cascada; se descarta porque el ejercicio anuncia un cambio dentro del plazo.
 | B05 | Cinco modelos y arquitectura | Alta | B01–B03 | docs/modelos/; 04_arquitectura.md |
 | B06 | Pruebas, RNF y evidencia | Crítica | B02–B04 | evidencias/ |
 | B07 | Documentación, demostración y ZIP | Alta | B05/B06 | README; demo/ |
+| B08 | Incorporar deshacer y ampliar pruebas | Crítica | V1 verificada | RF12–RF15, U6, docs/07_cambio.md |
 
 ## Tablero y evolución real
 

@@ -38,6 +38,25 @@ def main():
     except ErrorHistoria as error:
         bloques.append({'titulo':'Error de contenido controlado','salida':str(error)})
 
+    m=Motor(cargar_historia(RAIZ/'datos/la_ultima_transmision.json'))
+    lineas=['Inicio: respaldo='+str(m.puede_deshacer)]
+    m.elegir('revisar'); m.elegir('investigar')
+    lineas.append('Investigar: '+json.dumps(estado(m),ensure_ascii=False))
+    try:
+        m.elegir('activar_sin_verificar')
+    except ErrorEleccion as error:
+        lineas.append(str(error)+'; respaldo='+str(m.puede_deshacer))
+    assert m.deshacer()
+    lineas.append('Deshacer: '+json.dumps(estado(m),ensure_ascii=False))
+    lineas.append('Otro deshacer: '+str(m.deshacer()))
+    m.elegir('continuar'); m.elegir('activar_sin_verificar')
+    lineas.append('Llegada al final: '+json.dumps(estado(m),ensure_ascii=False))
+    assert m.deshacer()
+    lineas.append('Desde final: '+json.dumps(estado(m),ensure_ascii=False))
+    m.reiniciar()
+    lineas.append('Reinicio: '+json.dumps(estado(m),ensure_ascii=False)+'; respaldo='+str(m.puede_deshacer))
+    bloques.append({'titulo':'Cambio: retroceso de un nivel','salida':'\n'.join(lineas)})
+
     for bloque in bloques:
         print(bloque['titulo']+'\n'+bloque['salida']+'\n')
     (RAIZ/'demo/recorridos.json').write_text(json.dumps(bloques,ensure_ascii=False,indent=2),encoding='utf-8')

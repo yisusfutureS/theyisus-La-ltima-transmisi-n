@@ -17,12 +17,13 @@ def ejecutar(ruta, entradas=''):
 
 def main():
     resultado = ejecutar(RAIZ / 'datos/la_ultima_transmision.json',
-        'revisar\ncontinuar\nactivar_codigo\nactivar_sin_verificar\n:reiniciar\n:salir\n')
+        'revisar\ninvestigar\nactivar_sin_verificar\n:deshacer\n:deshacer\ncontinuar\nactivar_sin_verificar\n:deshacer\n:reiniciar\n:salir\n')
     assert resultado.returncode == 0, resultado.stderr
     assert 'Opción inexistente o no habilitada' in resultado.stdout
+    assert 'No hay una decisión disponible' in resultado.stdout
     assert '[E5]' in resultado.stdout
     assert resultado.stdout.count('[E1]') == 2
-    resultados = ['Consola: elección inválida, final y reinicio: OK']
+    resultados = ['Consola: elección inválida, deshacer, final y reinicio: OK']
     with tempfile.TemporaryDirectory(dir=RAIZ) as carpeta:
         datos = json.loads((RAIZ / 'datos/la_ultima_transmision.json').read_text(encoding='utf-8'))
         ruta = Path(carpeta) / 'invalida.json'
